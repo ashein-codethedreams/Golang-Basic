@@ -3,26 +3,26 @@ package main
 import "fmt"
 
 func main() {
-	age := 26
-	name := "codethedreams"
-	//printting
-	fmt.Print("Hello ,")
-	fmt.Print("World \n")
-	fmt.Print("new line! \n")
+	//var ages [3]int = [3]int{12, 34, 23} //arr type & length fixed
+	var ages = [3]int{12, 34, 23}
+	names := [4]string{"timber", "elen", "Nova"}
+	names[3] = "hook"
 
-	//print line
-	fmt.Println("Hello world !")
-	fmt.Println("new line ...")
-	fmt.Println("I am", name, ",age of", age)
+	fmt.Println(ages, len(ages))
+	fmt.Println(names, len(names))
 
-	//print formatting %_ =format specifier
-	fmt.Printf("my age is %v and name is %v \n", age, name)
-	fmt.Printf("age is type of %T \n", age)
-	fmt.Printf("my score is %f points! \n", 89.62)    //89.620000
-	fmt.Printf("my score is %0.1f points! \n", 89.62) //89.6
+	//slices (use arrays under the hood)
+	var scores = []int{100, 56} //can vary
+	scores[1] = 32
+	scores = append(scores, 93)
 
-	//Sprint (save formatted strings)
-	var str = fmt.Sprintf("my age is %v and name is %v \n", age, name)
-	fmt.Println("save string is:", str)
+	fmt.Println(scores, len(scores))
 
+	//slice ranges
+	rangeOne := names[1:3] //startFrom & exclude End = 1,2
+	//rangeTwo := names[1:] //include last
+	rangeTwo := names[:4] // start from 0
+
+	fmt.Println(rangeOne)
+	fmt.Println(rangeTwo)
 }

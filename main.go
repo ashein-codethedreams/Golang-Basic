@@ -1,28 +1,34 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 func main() {
-	//var ages [3]int = [3]int{12, 34, 23} //arr type & length fixed
-	var ages = [3]int{12, 34, 23}
-	names := [4]string{"timber", "elen", "Nova"}
-	names[3] = "hook"
+	greeting := "hey there friends!"
 
-	fmt.Println(ages, len(ages))
-	fmt.Println(names, len(names))
+	// fmt.Println(strings.Contains(greeting, "hey")) //boolean
+	// fmt.Println(strings.ReplaceAll(greeting, "hey", "hi"))
+	// fmt.Println(strings.ToUpper(greeting))
+	// fmt.Println(strings.Index(greeting, "th")) //4
+	fmt.Println(strings.Split(greeting, " "))
 
-	//slices (use arrays under the hood)
-	var scores = []int{100, 56} //can vary
-	scores[1] = 32
-	scores = append(scores, 93)
+	// the original phase value is unchanged
+	fmt.Println("Original string value is =", greeting)
 
-	fmt.Println(scores, len(scores))
+	//sort
+	ages := []int{23, 65, 17, 54, 41}
+	sort.Ints(ages) //changed original value
+	fmt.Println(ages)
 
-	//slice ranges
-	rangeOne := names[1:3] //startFrom & exclude End = 1,2
-	//rangeTwo := names[1:] //include last
-	rangeTwo := names[:4] // start from 0
+	index := sort.SearchInts(ages, 65)
+	fmt.Println(index)
 
-	fmt.Println(rangeOne)
-	fmt.Println(rangeTwo)
+	names := []string{"mario", "bunny", "lumos", "regnok"}
+	sort.Strings(names)
+	fmt.Println(names)
+
+	fmt.Println(sort.SearchStrings(names, "bunny"))
 }

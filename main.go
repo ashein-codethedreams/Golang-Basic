@@ -2,33 +2,32 @@ package main
 
 import (
 	"fmt"
-	"sort"
-	"strings"
 )
 
 func main() {
-	greeting := "hey there friends!"
+	// x := 0
+	// for x < 5 {
+	// 	fmt.Println("x is:", x)
+	// 	x++
+	// }
 
-	// fmt.Println(strings.Contains(greeting, "hey")) //boolean
-	// fmt.Println(strings.ReplaceAll(greeting, "hey", "hi"))
-	// fmt.Println(strings.ToUpper(greeting))
-	// fmt.Println(strings.Index(greeting, "th")) //4
-	fmt.Println(strings.Split(greeting, " "))
+	// for i := 0; i < 5; i++ {
+	// 	fmt.Println("i is:", i)
+	// }
 
-	// the original phase value is unchanged
-	fmt.Println("Original string value is =", greeting)
+	names := []string{"buddy", "cliff", "tom", "sam"}
 
-	//sort
-	ages := []int{23, 65, 17, 54, 41}
-	sort.Ints(ages) //changed original value
-	fmt.Println(ages)
+	// for i := 0; i < len(names); i++ {
+	// 	fmt.Println("name of each room is:", names[i])
+	// }
 
-	index := sort.SearchInts(ages, 65)
-	fmt.Println(index)
+	for index, value := range names {
+		fmt.Printf("the value at index %v is: %v \n", index, value)
+	}
 
-	names := []string{"mario", "bunny", "lumos", "regnok"}
-	sort.Strings(names)
+	for _, value := range names {
+		fmt.Printf("the value is: %v \n", value)
+		value = "new string"
+	}
 	fmt.Println(names)
-
-	fmt.Println(sort.SearchStrings(names, "bunny"))
 }

@@ -5,29 +5,31 @@ import (
 )
 
 func main() {
-	// x := 0
-	// for x < 5 {
-	// 	fmt.Println("x is:", x)
-	// 	x++
-	// }
+	age := 17
 
-	// for i := 0; i < 5; i++ {
-	// 	fmt.Println("i is:", i)
-	// }
+	fmt.Println(age >= 20)
+	fmt.Println(age <= 20)
+	fmt.Println(age == 17)
+	fmt.Println(age != 35)
 
-	names := []string{"buddy", "cliff", "tom", "sam"}
+	if age > 18 {
+		fmt.Println("You are adult")
+	} else if age > 25 {
+		fmt.Println("too old man!")
+	} else {
+		fmt.Println(("you just a kid"))
+	}
 
-	// for i := 0; i < len(names); i++ {
-	// 	fmt.Println("name of each room is:", names[i])
-	// }
-
+	names := []string{"mason", "ugarte", "zide", "dean"}
 	for index, value := range names {
-		fmt.Printf("the value at index %v is: %v \n", index, value)
+		if index == 1 {
+			fmt.Println("continuing at pos", index)
+			continue
+		}
+		if index > 2 {
+			fmt.Println("break at pos", index)
+			break
+		}
+		fmt.Printf("the value at index %v is %v \n", index, value)
 	}
-
-	for _, value := range names {
-		fmt.Printf("the value is: %v \n", value)
-		value = "new string"
-	}
-	fmt.Println(names)
 }

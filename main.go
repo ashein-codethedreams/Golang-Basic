@@ -3,32 +3,26 @@ package main
 import "fmt"
 
 func main() {
+	age := 26
+	name := "codethedreams"
+	//printting
+	fmt.Print("Hello ,")
+	fmt.Print("World \n")
+	fmt.Print("new line! \n")
 
-	//string
-	var nameOne string = "Nine"
-	var nameTwo = "John"
-	var nameThree string
-	fmt.Println(nameOne, nameTwo, nameThree)
+	//print line
+	fmt.Println("Hello world !")
+	fmt.Println("new line ...")
+	fmt.Println("I am", name, ",age of", age)
 
-	nameOne = "Lucus"
-	nameThree = "Elen"
-	fmt.Println(nameOne, nameTwo, nameThree)
+	//print formatting %_ =format specifier
+	fmt.Printf("my age is %v and name is %v \n", age, name)
+	fmt.Printf("age is type of %T \n", age)
+	fmt.Printf("my score is %f points! \n", 89.62)    //89.620000
+	fmt.Printf("my score is %0.1f points! \n", 89.62) //89.6
 
-	nameFour := "Dumbili" //short inside func
-	fmt.Println(nameFour)
-
-	//int
-	var ageOne int = 26
-	var ageTwo = 17
-	ageThree := 21
-	fmt.Println(ageOne, ageTwo, ageThree)
-
-	//bit & memory
-	// var numOne int8 = 25 //8bit
-	// var numTwo int8 = -128
-	// var numThree uint16 = 256
-
-	// var scoreOne float32 = 21.22
-	// var scoreTwo float64 = 34534534534534.7
+	//Sprint (save formatted strings)
+	var str = fmt.Sprintf("my age is %v and name is %v \n", age, name)
+	fmt.Println("save string is:", str)
 
 }

@@ -2,34 +2,28 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
+func greetingName(n string) {
+	fmt.Printf("Hello %v! \n", n)
+}
+
+func calArea(r float64) float64 {
+	return math.Pi * r * r
+}
+
+func cycleNames(n []string,f func(string)){
+	for _, v := range n{
+		f(v)
+	}
+}
+
 func main() {
-	age := 17
+	greetingName("AMM")
 
-	fmt.Println(age >= 20)
-	fmt.Println(age <= 20)
-	fmt.Println(age == 17)
-	fmt.Println(age != 35)
+	areaVal := calArea(1)
+	fmt.Println(areaVal)
 
-	if age > 18 {
-		fmt.Println("You are adult")
-	} else if age > 25 {
-		fmt.Println("too old man!")
-	} else {
-		fmt.Println(("you just a kid"))
-	}
-
-	names := []string{"mason", "ugarte", "zide", "dean"}
-	for index, value := range names {
-		if index == 1 {
-			fmt.Println("continuing at pos", index)
-			continue
-		}
-		if index > 2 {
-			fmt.Println("break at pos", index)
-			break
-		}
-		fmt.Printf("the value at index %v is %v \n", index, value)
-	}
+	cycleNames([]string{"cloud","tim","lucy"},greetingName)
 }

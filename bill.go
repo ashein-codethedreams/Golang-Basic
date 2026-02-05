@@ -5,14 +5,14 @@ import "fmt"
 type bill struct {
 	name  string
 	items map[string]float64
-	tip   float32
+	tip   float64
 }
 
 // make new bills
 func newBill(name string) bill {
 	b := bill{
 		name:  name,
-		items: map[string]float64{"pie": 25.3, "coffee": 12.65, "ham": 23},
+		items: map[string]float64{},
 		tip:   0,
 	}
 	return b
@@ -29,7 +29,20 @@ func (b bill) format() string {
 		total += v
 	}
 
+	//add tip
+	fs += fmt.Sprintf("%-20v ...$%v \n", "tip:", b.tip)
+
 	//total
-	fs += fmt.Sprintf("%-20v ...$%0.2f", "total:", total)
+	fs += fmt.Sprintf("%-20v ...$%0.2f", "total:", total+b.tip)
 	return fs
+}
+
+//update the tip
+func (b *bill) updateTip(tip float64) {
+	b.tip = tip
+}
+
+//add item
+func (b *bill) addItem(name string, price float64) {
+	b.items[name] = price
 }

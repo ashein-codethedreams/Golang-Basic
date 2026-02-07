@@ -4,13 +4,14 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
-func getInput(prompt string,r *bufio.Reader) (string,error) {
+func getInput(prompt string, r *bufio.Reader) (string, error) {
 	fmt.Print(prompt)
-	input,err:=r.ReadString('\n')
-	return strings.TrimSpace(input),err
+	input, err := r.ReadString('\n')
+	return strings.TrimSpace(input), err
 }
 
 func createBill() bill {
@@ -19,7 +20,7 @@ func createBill() bill {
 	// name, _ := reader.ReadString('\n')
 	// name = strings.TrimSpace(name)
 
-	name, _ := getInput("Enter the name of the bill: ",reader)
+	name, _ := getInput("Enter the name of the bill: ", reader)
 
 	b := newBill(name)
 	fmt.Println("Created the bill - ", b.name)
@@ -29,17 +30,34 @@ func createBill() bill {
 func promptOptions(b bill) {
 	reader := bufio.NewReader(os.Stdin)
 
-	opt,_ :=getInput("Choose option (a - add item, s - save the bill, t - add tip) :",reader)
-	switch opt{
+	opt, _ := getInput("Choose option (a - add item, s - save the bill, t - add tip) :", reader)
+	switch opt {
 	case "a":
-		name,_:= getInput("Enter the item's name: ",reader)
-		price,_:= getInput("Enter the item's price: ",reader)
-		fmt.Println(name,price)
-	case "s":
-		fmt.Println("u chose s")
+		name, _ := getInput("Enter the item's name: ", reader)
+		price, _ := getInput("Enter the item's price: ", reader)
+
+		p, err := strconv.ParseFloat(price, 64)
+		if err != nil {
+			fmt.Println("invalid price")
+			promptOptions(b)
+		}
+		b.addItem(name, p)
+		fmt.Println("item added - ", name, price)
+		promptOptions(b)
 	case "t":
-		tip,_:= getInput("Enter the tip($): ",reader)
-		fmt.Println(tip)
+		tip, _ := getInput("Enter the tip($): ", reader)
+
+		t, err := strconv.ParseFloat(tip, 64)
+		if err != nil {
+			fmt.Println("invalid tip")
+			promptOptions(b)
+		}
+		b.updateTip(t)
+
+		fmt.Println("tip added - ", tip)
+		promptOptions(b)
+	case "s":
+		fmt.Println("u chose save the bill", b)
 	default:
 		fmt.Println("invalid option")
 		promptOptions(b)
@@ -48,5 +66,4 @@ func promptOptions(b bill) {
 func main() {
 	mybill := createBill()
 	promptOptions(mybill)
-	fmt.Println(mybill)
 }

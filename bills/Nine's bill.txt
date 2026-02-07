@@ -1,0 +1,6 @@
+Bill breakdown: 
+pizza:               ...$34.76 
+orange juice:        ...$12 
+rice & curry:        ...$65.12 
+tip:                 ...$9.08 
+total:               ...$120.96
